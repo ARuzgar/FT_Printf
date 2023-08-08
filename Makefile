@@ -33,6 +33,7 @@ git :
 	git commit -m " Make Git Update"
 	git push
 	git status
+	git log
 
 re : fclean all
 
