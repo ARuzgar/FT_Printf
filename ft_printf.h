@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 17:50:44 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:40:46 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # define BASELOW "0123456789abcdef"
 # define BASEUP "0123456789ABCDEF"
 
-int	put_char(char c);
-int	print_base_10(int number);
-int	print_string(char *string);
-int	print_unsigned(unsigned int number);
+int	ft_put_char(char c);
+int	ft_print_base_10(int number);
+int	ft_print_string(char *string);
+int	ft_print_unsigned(unsigned int number);
+int	ft_print_hex(unsigned int number, char identifier);
 
 #endif

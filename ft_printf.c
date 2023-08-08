@@ -6,33 +6,33 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 18:33:54 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:24:21 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	parse(va_list arg, char *str)
+int	parse(va_list *arg, char identifier)
 {
 	int	print_count;
 
 	print_count = 0;
-	if (*str == CHAR_FLAG)
-		print_count += put_char(va_arg(arg, char));
-	else if (*str == STR_FLAG)
-		print_count += put_string(va_arg(arg, char *));
-	else if (*str == 'i' || *str == 'd')
-		print_count += print_base10(va_arg(arg, int));
-	else if (*str == UNSIGNED_FLAG)
-		print_count += print_unsigned(va_arg(arg, unsigned int));
-	else if (*str == 'x' || *str == 'X')
-		print_count += print_hex(va_arg(arg, unsigned int), *str);
-	else if (*str == '%')
+	if (identifier == CHAR_FLAG)
+		print_count += ft_put_char(va_arg(*arg, int));
+	else if (identifier == STR_FLAG)
+		print_count += ft_print_string(va_arg(*arg, char *));
+	else if (identifier == 'i' || identifier == 'd')
+		print_count += ft_print_base_10(va_arg(*arg, int));
+	else if (identifier == UNSIGNED_FLAG)
+		print_count += ft_print_unsigned(va_arg(*arg, unsigned int));
+	else if (identifier == 'x' || identifier == 'X')
+		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier);
+	else if (identifier == '%')
 		print_count += write(1, "%", 1);
-	else if (*str == PTR_FLAG)
+	else if (identifier == PTR_FLAG)
 	{
 		print_count += write(1, "0x", 2);
-		print_count += print_hex(va_arg(arg, unsigned int), *str);
+		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier);
 	}
 	return (print_count);
 }
@@ -40,16 +40,19 @@ int	parse(va_list arg, char *str)
 int	ft_printf(const char *string, ...)
 {
 	int		print_count;
+	int		i;
 	va_list	argument;
 
+	i = 0;
 	print_count = 0;
 	va_start (argument, string);
-	while (*string)
+	while (string[i] != '\0')
 	{
-		if (*string == '%' && *(string + 1))
-			print_count += parse(&argument, ++string);
+		if (string[i] == '%')
+			print_count += parse(&argument, string[++i]);
 		else
-			print_count += put_char(string++);
+			print_count += ft_put_char(string[i]);
+		i++;
 	}
 	return (print_count);
 }
@@ -57,37 +60,34 @@ int	ft_printf(const char *string, ...)
 #include "ft_printf.h"
 #include <stdio.h>
 
+#include <stdio.h>
+
+#include "ft_printf.h"
+#include <stdio.h>
+
 int main()
 {
-    int print_count;
-
-    // Test cases for ft_printf
     printf("Unit Testing ft_printf:\n\n");
 
-    // Test individual characters and strings
-    print_count = ft_printf("Characters: %c %c\n", 'A', 'B');
-    printf("ft_printf: %d\n", print_count);
-    printf("printf: %d\n\n", printf("Characters: %c %c\n", 'A', 'B'));
+    // Test characters
+    ft_printf("Characters: %c %c\n", 'A', 'B');
+    printf("Expected: Characters: A B\n\n");
 
     // Test integers and hexadecimal conversions
-    print_count = ft_printf("Integers: %d %i %x %X\n", 123, -456, 255, 255);
-    printf("ft_printf: %d\n", print_count);
-    printf("printf: %d\n\n", printf("Integers: %d %i %x %X\n", 123, -456, 255, 255));
+    ft_printf("Integers: %d %i %x %X\n", 123, -456, 255, 255);
+    printf("Expected: Integers: 123 -456 ff FF\n\n");
 
     // Test strings and pointers
-    print_count = ft_printf("Strings and Pointers: %s %p\n", "Hello", &print_count);
-    printf("ft_printf: %d\n", print_count);
-    printf("printf: %d\n\n", printf("Strings and Pointers: %s %p\n", "Hello", &print_count));
+    ft_printf("Strings and Pointers: %s %p\n", "Hello", &main);
+    printf("Expected: Strings and Pointers: Hello %p\n\n", &main);
 
     // Test percentage sign
-    print_count = ft_printf("Percentage: %%\n");
-    printf("ft_printf: %d\n", print_count);
-    printf("printf: %d\n\n", printf("Percentage: %%\n"));
+    ft_printf("Percentage: %%\n");
+    printf("Expected: Percentage: %%\n\n");
 
     // Test edge cases
-    print_count = ft_printf("Edge Cases: %d %s %% %c\n", INT_MIN, NULL, 'Z');
-    printf("ft_printf: %d\n", print_count);
-    printf("printf: %d\n\n", printf("Edge Cases: %d %s %% %c\n", INT_MIN, NULL, 'Z'));
+    ft_printf("Edge Cases: %d %s %% %c\n", INT_MIN, NULL, 'Z');
+    printf("Expected: Edge Cases: -2147483648 (null) %% Z\n\n");
 
     return 0;
 }
