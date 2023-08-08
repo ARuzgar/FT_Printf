@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 19:24:21 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:24:48 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,6 @@ int	ft_printf(const char *string, ...)
 	}
 	return (print_count);
 }
-
-#include "ft_printf.h"
-#include <stdio.h>
-
-#include <stdio.h>
-
-#include "ft_printf.h"
-#include <stdio.h>
 
 int main()
 {
