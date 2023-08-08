@@ -28,12 +28,11 @@ fclean : clean
 	@$(rm) $(NAME)
 
 git : 
+	git status
 	git add .
 	git status
-	git commit -m " Make Git Update"
+	git commit -m "Make Git Update"
 	git push
-	git status
-	git log
 
 re : fclean all
 
