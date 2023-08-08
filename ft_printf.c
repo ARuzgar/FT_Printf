@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 19:24:48 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:26:08 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_printf(const char *string, ...)
 	return (print_count);
 }
 
-int main()
+/* int main()
 {
     printf("Unit Testing ft_printf:\n\n");
 
@@ -83,3 +83,4 @@ int main()
 
     return 0;
 }
+ */

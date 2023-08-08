@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:36:53 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 19:22:03 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:28:59 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ int	ft_print_unsigned(unsigned int number)
 	return (print_count);
 }
 
-int ft_print_hex(unsigned int number, char identifier)
+int	ft_print_hex(unsigned int number, char identifier)
 {
-    int print_count;
+	int	print_count;
 
-    print_count = 0;
-    if (number >= 16)
-        print_count += ft_print_hex(number / 16, identifier);
+	print_count = 0;
+	if (number >= 16)
+		print_count += ft_print_hex(number / 16, identifier);
 	if ((number % 16) < 16 && identifier == 'X')
 		print_count += ft_put_char(BASEUP[number % 16]);
 	else if ((number % 16) < 16)
 		print_count += ft_put_char(BASELOW[number % 16]);
-    return print_count;
+	return (print_count);
 }
