@@ -6,17 +6,31 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:36:53 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 19:28:59 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:09:37 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/* 
+   This function prints a single character.
+   It takes a character as input.
+   Writes the character to the standard output.
+   Returns the number of characters printed (1).
+*/
 
 int	ft_put_char(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
+
+/* 
+   This function prints a string.
+   It takes a string as input.
+   Writes the string to the standard output.
+   Returns the total number of characters printed.
+*/
 
 int	ft_print_string(char *string)
 {
@@ -29,6 +43,13 @@ int	ft_print_string(char *string)
 		print_count += write(1, string++, 1);
 	return (print_count);
 }
+
+/* 
+   This function prints an integer in base 10.
+   It takes an integer as input.
+   Prints the integer to the standard output.
+   Returns the total number of characters printed.
+*/
 
 int	ft_print_base_10(int number)
 {
@@ -55,6 +76,13 @@ int	ft_print_base_10(int number)
 	return (print_count);
 }
 
+/* 
+   This function prints an unsigned integer.
+   It takes an unsigned integer as input.
+   Prints the integer to the standard output.
+   Returns the total number of characters printed.
+*/
+
 int	ft_print_unsigned(unsigned int number)
 {
 	int	print_count;
@@ -69,6 +97,14 @@ int	ft_print_unsigned(unsigned int number)
 	}
 	return (print_count);
 }
+
+/* 
+   This function prints an unsigned integer in hexadecimal.
+   It takes an unsigned integer and 
+   an identifier character ('x' or 'X') as input.
+   Prints the hexadecimal number to the standard output.
+   Returns the total number of characters printed.
+*/
 
 int	ft_print_hex(unsigned int number, char identifier)
 {

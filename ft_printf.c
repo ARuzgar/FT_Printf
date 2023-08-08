@@ -6,11 +6,19 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 19:26:08 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:08:56 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/* 
+   This function handles parsing of format specifiers.
+   It takes a va_list pointer(to prevent undef. behaviours) 
+   And an identifier character. It processes the identifier 
+   And calls the corresponding function. 
+   Returns the total number of characters printed.
+*/
 
 int	parse(va_list *arg, char identifier)
 {
@@ -36,6 +44,13 @@ int	parse(va_list *arg, char identifier)
 	}
 	return (print_count);
 }
+
+/* 
+   This is the main ft_printf function.
+   It takes a format string and a variable number of arguments.
+   It iterates through the format string and processes format specifiers.
+   Returns the total number of characters printed.
+*/
 
 int	ft_printf(const char *string, ...)
 {
