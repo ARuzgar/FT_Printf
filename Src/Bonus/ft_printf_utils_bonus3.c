@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:21:57 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 16:48:14 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:09:21 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,39 @@ int	is_digit(char c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
+}
+
+int	width_count(char *string)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (is_digit(*string))
+	{
+		i = *string - '0';
+		j = j * 10 + i;
+		string++;
+	}
+	return (j);
+}
+
+int	print_width(int	width,char flag, char *string)
+{
+	int	print_count;
+
+	print_count = 0;
+	if (flag == '0')
+	{
+		while (width-- > 0)
+			print_count += ft_put_char('0');
+	}
+	else if (flag == '-')
+	{
+		while (width-- > 0)
+			print_count += ft_put_char(' ');
+	}
+	return (print_count);
+
 }

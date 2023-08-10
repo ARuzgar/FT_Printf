@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 15:16:05 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 20:11:43 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	flag_check(va_list *arg,char *string)
 	else if (*string == '+')
 		print_count += plus_flag(arg, string);
 	else if (is_mandatory_flag(*string))
-		print_count += parse(arg, *string);
+		print_count += parse(arg, *string, "n", 0);
 	return (print_count);
 }
 
@@ -49,7 +49,7 @@ int	flag_check(va_list *arg,char *string)
    Returns the total number of characters printed.
 */
 
-int	parse(va_list *arg, char identifier)
+int	parse(va_list *arg, char identifier, char flag,int width)
 {
 	int	print_count;
 
@@ -57,19 +57,19 @@ int	parse(va_list *arg, char identifier)
 	if (identifier == CHAR_FLAG)
 		print_count += ft_put_char(va_arg(*arg, int));
 	else if (identifier == STR_FLAG)
-		print_count += ft_print_string(va_arg(*arg, char *));
+		print_count += ft_print_string(va_arg(*arg, char *), flag, width);
 	else if (identifier == 'i' || identifier == 'd')
 		print_count += ft_print_base_10(va_arg(*arg, int));
 	else if (identifier == UNSIGNED_FLAG)
-		print_count += ft_print_unsigned(va_arg(*arg, unsigned int));
+		print_count += ft_print_unsigned(va_arg(*arg, unsigned int), flag, width);
 	else if (identifier == 'x' || identifier == 'X')
-		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier);
+		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier, flag, width);
 	else if (identifier == '%')
 		print_count += write(1, "%", 1);
 	else if (identifier == PTR_FLAG)
 	{
 		print_count += write(1, "0x", 2);
-		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier);
+		print_count += ft_print_hex(va_arg(*arg, unsigned int), identifier, flag, width);
 	}
 	return (print_count);
 }

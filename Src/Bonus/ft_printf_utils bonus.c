@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_utils bonus.c                               :+:      :+:    :+:   */
+/*   ft_printf_utils bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:36:53 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 12:52:10 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 22:47:21 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	ft_put_char(char c)
    Returns the total number of characters printed.
 */
 
-int	ft_print_string(char *string)
+int	ft_print_string(char *string, char flag, int width)
 {
 	int	print_count;
 
 	print_count = 0;
 	if (string == NULL)
 		return (write (1, "(null)", 6));
-	while (*string != '\0')
+	while (*string != '\0', flag == 'n' || width == 0)
 		print_count += write(1, string++, 1);
 	return (print_count);
 }
@@ -51,7 +51,7 @@ int	ft_print_string(char *string)
    Returns the total number of characters printed.
 */
 
-int	ft_print_base_10(int number)
+int	ft_print_base_10(int number, char flag, int width)
 {
 	int	print_count;
 
@@ -83,7 +83,7 @@ int	ft_print_base_10(int number)
    Returns the total number of characters printed.
 */
 
-int	ft_print_unsigned(unsigned int number)
+int	ft_print_unsigned(unsigned int number, char flag, int width)
 {
 	int	print_count;
 
@@ -92,8 +92,8 @@ int	ft_print_unsigned(unsigned int number)
 		print_count += ft_put_char(number + '0');
 	else
 	{
-		print_count += ft_print_unsigned(number / 10);
-		print_count += ft_print_unsigned(number % 10);
+		print_count += ft_print_unsigned(number / 10, flag, width);
+		print_count += ft_print_unsigned(number % 10, flag, width);
 	}
 	return (print_count);
 }
@@ -106,13 +106,13 @@ int	ft_print_unsigned(unsigned int number)
    Returns the total number of characters printed.
 */
 
-int	ft_print_hex(unsigned int number, char identifier)
+int	ft_print_hex(unsigned int number, char identifier, char flag, int width)
 {
 	int	print_count;
 
 	print_count = 0;
 	if (number >= 16)
-		print_count += ft_print_hex(number / 16, identifier);
+		print_count += ft_print_hex(number / 16, identifier, flag, width);
 	if ((number % 16) < 16 && identifier == 'X')
 		print_count += ft_put_char(BASEUP[number % 16]);
 	else if ((number % 16) < 16)

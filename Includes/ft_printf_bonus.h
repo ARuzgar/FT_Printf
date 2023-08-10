@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 15:25:18 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 20:11:13 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	flag_check(va_list *arg, char *string);
 /* ft_printf_bonus_utils.c */
 
 int	ft_put_char(char c);
-int	ft_print_string(char *string);
-int	ft_print_base_10(int number);
-int	ft_print_unsigned(unsigned int number);
-int	ft_print_hex(unsigned int number, char identifier);
+int	ft_print_string(char *string, char flag, int width);
+int	ft_print_base_10(int number, char flag, int width);
+int	ft_print_unsigned(unsigned int number, char flag, int width);
+int	ft_print_hex(unsigned int number, char identifier, char flag, int width);
 
 
 /* ft_printf_bonus_utils2.c */
