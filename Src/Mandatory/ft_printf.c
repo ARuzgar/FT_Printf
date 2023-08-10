@@ -6,11 +6,11 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/08 20:08:56 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 12:51:01 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../Includes/ft_printf.h"
 
 /* 
    This function handles parsing of format specifiers.
