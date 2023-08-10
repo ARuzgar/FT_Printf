@@ -6,11 +6,11 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:36:53 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/09 14:08:53 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 12:52:22 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../Includes/ft_printf.h"
 
 /* 
    This function prints a single character.

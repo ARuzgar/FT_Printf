@@ -6,18 +6,44 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 12:51:15 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:05:20 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/ft_printf_bonus.h"
 
-int	flag_check(va_list *arg, char identifier, t_flags *flags)
+/* 
+	This function checks for flags and calls the corresponding function.
+	It takes a va_list pointer(to prevent undef. behaviours)
+	And a character identifier for flags. 
+	It returns the total number of characters printed.
+*/
+
+int	flag_check(va_list *arg,char *string)
 {
 	int	print_count;
-
-	print_count = 0;
+	int	i;
 	
+	print_count = 0;
+	i = 0;
+	if (string[i] == '-')
+		print_count += minus_flag(arg, string[++i]);
+	else if (string[i] == '0')
+		print_count += zero_flag(arg, string[++i]);
+	else if (string[i] == '.')
+		print_count += precision_flag(arg, string[++i]);
+	else if (string[i] == '#')
+		print_count += sharp_flag(arg, string[++i]);
+	else if (string[i] == ' ')
+		print_count += space_flag(arg, string[++i]);
+	else if (string[i] == '+')
+		print_count += plus_flag(arg, string[++i]);
+	else if (string[i] == '*')
+		print_count += width_flag(arg, string[++i]);
+	else if (string[i] == 'c' || string[i] == 's' || string[i] == 'i'
+		|| string[i] == 'd' || string[i] == 'u' || string[i] == 'x'
+		|| string[i] == 'X' || string[i] == 'p' || string[i] == '%')
+		print_count += parse(arg, string[i]);
 	return (print_count);
 }
 
@@ -65,21 +91,21 @@ int	ft_printf(const char *string, ...)
 {
 	int		print_count;
 	int		i;
+	char	*str;
 	va_list	argument;
-	t_flags *flags;
 
 	i = 0;
 	print_count = 0;
-	flags = malloc(sizeof(t_flags));
-	va_start (argument, string);
-	init_flags(flags);
+	str = (char *)string;
+	va_start (argument, str);
 	while (string[i] != '\0')
 	{
+		str = (char *)string;
 		if (string[i] == '%' && string[i + 1] != '\0')
-			print_count += flag_check(&argument, string[++i], flags);
-		else
-			print_count += ft_put_char(string[i]);
-		i++;
+			print_count += flag_check(&argument, ++str);
+		else if (string[i] != '%')
+			print_count += ft_put_char(str++);
+		str++;
 	}
 	return (print_count);
 }

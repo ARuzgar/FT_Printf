@@ -12,9 +12,9 @@ SRCS = ft_printf.c printf_utils.c
 
 SRCS_BONUS = ft_printf_bonus.c printf_utils_bonus.c
 
-OBJS = $(addprefix $(OBJ_DIR), $(SRCS:SRC_DIR%.c=%.o))
+OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
-OBJS_BONUS = $(addprefix $(OBJ_DIR), $(SRCS_BONUS:SRC_DIR_BONUS%.c=%.o))
+OBJS_BONUS = $(addprefix $(OBJ_DIR), $(SRCS_BONUS:.c=.o))
 
 CC = gcc
 
@@ -27,7 +27,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
-$(OBJ_DIR)%.o : $(SRC_DIR%.c)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p trash
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
@@ -49,4 +49,4 @@ git :
 
 re : fclean all
 
-.PHONY : all clean fclean re git
+.PHONY : all clean fclean re git bonus

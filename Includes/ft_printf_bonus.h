@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 12:23:17 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:03:38 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 int	ft_printf(const char *string, ...);
 int	parse(va_list *arg, char identifier);
+int	flag_check(va_list *arg, char *string);
 
 /* printf_utils.c */
 
@@ -61,16 +62,5 @@ To Handle :
 	Positive Sign Flag (+)
 		Inserts a plus sign before the output if it's a positive signed conversion.
 */
-
-typedef struct s_flags
-{
-	int	minus;
-	int	zero;
-	int	precision;
-	int	sharp;
-	int	space;
-	int	plus;
-	int	width;
-}	t_flags;
 
 #endif
