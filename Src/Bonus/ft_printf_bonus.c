@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 14:05:20 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:16:05 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,22 @@
 int	flag_check(va_list *arg,char *string)
 {
 	int	print_count;
-	int	i;
 	
 	print_count = 0;
-	i = 0;
-	if (string[i] == '-')
-		print_count += minus_flag(arg, string[++i]);
-	else if (string[i] == '0')
-		print_count += zero_flag(arg, string[++i]);
-	else if (string[i] == '.')
-		print_count += precision_flag(arg, string[++i]);
-	else if (string[i] == '#')
-		print_count += sharp_flag(arg, string[++i]);
-	else if (string[i] == ' ')
-		print_count += space_flag(arg, string[++i]);
-	else if (string[i] == '+')
-		print_count += plus_flag(arg, string[++i]);
-	else if (string[i] == '*')
-		print_count += width_flag(arg, string[++i]);
-	else if (string[i] == 'c' || string[i] == 's' || string[i] == 'i'
-		|| string[i] == 'd' || string[i] == 'u' || string[i] == 'x'
-		|| string[i] == 'X' || string[i] == 'p' || string[i] == '%')
-		print_count += parse(arg, string[i]);
+	if (*string == '-')
+		print_count += minus_flag(arg, string);
+	else if (*string == '0')
+		print_count += zero_flag(arg, string);
+	else if (*string == '.')
+		print_count += precision_flag(arg, string);
+	else if (*string == '#')
+		print_count += sharp_flag(arg, string);
+	else if (*string == ' ')
+		print_count += space_flag(arg, string);
+	else if (*string == '+')
+		print_count += plus_flag(arg, string);
+	else if (is_mandatory_flag(*string))
+		print_count += parse(arg, *string);
 	return (print_count);
 }
 
@@ -90,20 +84,18 @@ int	parse(va_list *arg, char identifier)
 int	ft_printf(const char *string, ...)
 {
 	int		print_count;
-	int		i;
 	char	*str;
 	va_list	argument;
 
-	i = 0;
 	print_count = 0;
 	str = (char *)string;
 	va_start (argument, str);
-	while (string[i] != '\0')
+	while (*str != '\0')
 	{
 		str = (char *)string;
-		if (string[i] == '%' && string[i + 1] != '\0')
+		if (*str == '%' && *(str + 1) != '\0')
 			print_count += flag_check(&argument, ++str);
-		else if (string[i] != '%')
+		else if (*str != '%')
 			print_count += ft_put_char(str++);
 		str++;
 	}

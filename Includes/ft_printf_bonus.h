@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 14:03:38 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:25:18 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@
 # define BASELOW "0123456789abcdef"
 # define BASEUP "0123456789ABCDEF"
 
-/* Function Prototypes */
-
-/* ft_printf_bonus.c */
-
-int	ft_printf(const char *string, ...);
-int	parse(va_list *arg, char identifier);
-int	flag_check(va_list *arg, char *string);
-
-/* printf_utils.c */
-
-int	ft_put_char(char c);
-int	ft_print_string(char *string);
-int	ft_print_base_10(int number);
-int	ft_print_unsigned(unsigned int number);
-int	ft_print_hex(unsigned int number, char identifier);
-
-/* printf_bonus_utils.c */
-
-/*Flag Struct*/
-
 /*
 To Handle : 
 	Left Justify Flag (-) 
@@ -62,5 +42,37 @@ To Handle :
 	Positive Sign Flag (+)
 		Inserts a plus sign before the output if it's a positive signed conversion.
 */
+
+
+/* ----- Function Prototypes ----- */
+
+/* ft_printf_bonus.c */
+
+int	ft_printf(const char *string, ...);
+int	parse(va_list *arg, char identifier);
+int	flag_check(va_list *arg, char *string);
+
+/* ft_printf_bonus_utils.c */
+
+int	ft_put_char(char c);
+int	ft_print_string(char *string);
+int	ft_print_base_10(int number);
+int	ft_print_unsigned(unsigned int number);
+int	ft_print_hex(unsigned int number, char identifier);
+
+
+/* ft_printf_bonus_utils2.c */
+
+int	minus_flag(va_list *arg, char *string);
+int	zero_flag(va_list *arg, char *string);
+int	precision_flag(va_list *arg, char *string);
+int	sharp_flag(va_list *arg, char *string);
+int	space_flag(va_list *arg, char *string);
+
+/* ft_printf_bonus_utils3.c */
+
+int	is_mandatory_flag(char flag);
+int	plus_flag();
+
 
 #endif

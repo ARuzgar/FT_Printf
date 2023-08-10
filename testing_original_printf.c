@@ -2,6 +2,12 @@
 
 int main()
 {
+
+	printf("minusalone:%-10s|| minuswithspace:% -10s||minusontheright:%s-10||minuswithnegative:%--5s||\n", "hello", "hello", "hello", "hello");
+	printf("minusalone:%-10.3s||\n", "hello");
+	printf("minusalone:%-s||\n", "hello");
+	printf("minusalone:%-10d||\n", 55555);
+	printf("minusalone:%-10.3d||\n", 55555);
 /* 	printf("1% s || 2%       s\n", "hello", "hello");
 	printf("--------------------\n");
 	printf("1% c || 2%       c\n", 'a', 'a');
@@ -34,7 +40,7 @@ int main()
 	printf("--------------------\n");
 	printf("1%-5c || 2%       -5c\n", 'a', 'a'); */
 
-	printf("1%.3s || 2%       .3s\n", "hello", "hello");
+/* 	printf("1%.3s || 2%       .3s\n", "hello", "hello");
 	printf("--------------------\n");
 	printf("1%.2d || 2%       .5d\n", 4244, 4244);
 	printf("--------------------\n");
@@ -42,7 +48,7 @@ int main()
 	printf("--------------------\n");
 	printf("1%.0s || 2%       .0s\n", "hello", "hello");
 	printf("--------------------\n");
-	printf("1%.1s || 2%       .1s\n", "hello", "hello");
+	printf("1%.1s || 2%       .1s\n", "hello", "hello"); */
 
 
 	return 0;
