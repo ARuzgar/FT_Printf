@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:33:12 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 20:11:43 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:30:34 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	flag_check(va_list *arg,char *string)
 	else if (*string == ' ')
 		print_count += space_flag(arg, string);
 	else if (*string == '+')
-		print_count += plus_flag(arg, string);
+		print_count += plus_flag(va_arg(*arg, int));
 	else if (is_mandatory_flag(*string))
 		print_count += parse(arg, *string, "n", 0);
 	return (print_count);
@@ -59,7 +59,7 @@ int	parse(va_list *arg, char identifier, char flag,int width)
 	else if (identifier == STR_FLAG)
 		print_count += ft_print_string(va_arg(*arg, char *), flag, width);
 	else if (identifier == 'i' || identifier == 'd')
-		print_count += ft_print_base_10(va_arg(*arg, int));
+		print_count += ft_print_base_10(va_arg(*arg, int), flag, width);
 	else if (identifier == UNSIGNED_FLAG)
 		print_count += ft_print_unsigned(va_arg(*arg, unsigned int), flag, width);
 	else if (identifier == 'x' || identifier == 'X')

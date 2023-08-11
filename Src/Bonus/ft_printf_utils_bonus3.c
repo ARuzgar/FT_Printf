@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:21:57 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 19:09:21 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:41:44 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int	plus_flag()
 	int	print_count;
 
 	print_count = 0;
+	if (i > 0 && i <= INT_MAX)
+		print_count += write(1, "+", 1);
+	print_count += ft_print_base_10(i);
 	return (print_count);
 }
 

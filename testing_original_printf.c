@@ -3,11 +3,23 @@
 int main()
 {
 
-	printf("minusalone:%-10s|| minuswithspace:% -10s||minusontheright:%s-10||minuswithnegative:%--5s||\n", "hello", "hello", "hello", "hello");
+	printf("minusalonewithstring : %-10s||\n", "hello");
+	printf("minusalonewithdigits : %-10d||\n", 55555);
+	printf("minusalonewithintege : %-10i||\n", 55555);
+	printf("minusalonewithcharac : %-10c||\n", 'C');
+	printf("minusalonewithpointe : %-20p||\n", &main);
+	printf("--------------------\n");
+	printf("minuswithdotwithstri : %-10.3s||\n", "hello");
+	printf("minuswithdotwithdigi : %-10.3d||\n", 55555);
+	printf("minuswithdotwithinte : %-10.3i||\n", 55555);
+	printf("minuswithdotwithchar : %-10.3c||\n", 'C');
+	printf("minuswithdotwithpoin : %-20.3p||\n", &main);
+
+	/* printf("minusalone:%-10s|| minuswithspace:% -10s||minusontheright:%s-10||minuswithnegative:%--5s||\n", "hello", "hello", "hello", "hello");
 	printf("minusalone:%-10.3s||\n", "hello");
 	printf("minusalone:%-s||\n", "hello");
 	printf("minusalone:%-10d||\n", 55555);
-	printf("minusalone:%-10.3d||\n", 55555);
+	printf("minusalone:%-10.3d||\n", 55555); */
 /* 	printf("1% s || 2%       s\n", "hello", "hello");
 	printf("--------------------\n");
 	printf("1% c || 2%       c\n", 'a', 'a');

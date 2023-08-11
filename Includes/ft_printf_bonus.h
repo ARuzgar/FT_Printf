@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 20:11:13 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:30:18 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 To Handle : 
 	Left Justify Flag (-) 
 		Left-justifies the output within the specified field width.
-	Zero Flag (0)
+	Padding Zero Flag (0)
 		Pads the output with leading zeros within the specified field width.
 	Precision Flag (.)
 		Specifies precision: Limits the number of decimal places for strings.
@@ -49,7 +49,7 @@ To Handle :
 /* ft_printf_bonus.c */
 
 int	ft_printf(const char *string, ...);
-int	parse(va_list *arg, char identifier);
+int	parse(va_list *arg, char identifier, char flag, int width);
 int	flag_check(va_list *arg, char *string);
 
 /* ft_printf_bonus_utils.c */
@@ -65,7 +65,7 @@ int	ft_print_hex(unsigned int number, char identifier, char flag, int width);
 
 int	minus_flag(va_list *arg, char *string);
 int	zero_flag(va_list *arg, char *string);
-int	precision_flag(va_list *arg, char *string);
+int	dot_flag(va_list *arg, char *string);
 int	sharp_flag(va_list *arg, char *string);
 int	space_flag(va_list *arg, char *string);
 
