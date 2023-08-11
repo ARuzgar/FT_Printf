@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:36:53 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 22:47:21 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:12:33 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_print_string(char *string, char flag, int width)
 	if (string == NULL)
 		return (write (1, "(null)", 6));
 	while (*string != '\0', flag == 'n' || width == 0)
+		print_count += write(1, string++, 1);
+	while (*string != '\0', flag == '.' || width-- > 0)
 		print_count += write(1, string++, 1);
 	return (print_count);
 }
