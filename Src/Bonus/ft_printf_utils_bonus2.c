@@ -14,6 +14,7 @@ int	minus_flag(va_list *arg, char *string)
 	if (is_mandatory_flag(*(string + 1)))
 		print_count += parse(arg, *(string + 1));
 	else if (*(string + 1 ) != '\0')
+		
 		while (!is_mandatory_flag(*++string) && *string != '\0')
 		{
 			if (is_digit(*string))
@@ -28,6 +29,8 @@ int	minus_flag(va_list *arg, char *string)
 				dot_after_minus = true;
 				break ;
 			}
+			else if (!is_mandatory_flag(*string) && *string != '\0' && is_printable(*string))
+
 		}
 	if (width <= 0 && dot_after_minus == false)
 		print_count += parse(arg, *(string + 1));

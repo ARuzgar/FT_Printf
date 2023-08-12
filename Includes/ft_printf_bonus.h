@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/11 11:30:18 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:06:12 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ int	space_flag(va_list *arg, char *string);
 
 /* ft_printf_bonus_utils3.c */
 
-int	is_mandatory_flag(char flag);
 int	plus_flag();
+int	is_mandatory_flag(char flag);
+int	is_digit(char c);
+int	width_count(char *string);
+int	print_width(int width, char flag, char *string);
 
+/* ft_printf_bonus_utils4.c */
+
+int	is_printable(char c)
 
 #endif

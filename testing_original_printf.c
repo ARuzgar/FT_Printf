@@ -14,6 +14,11 @@ int main()
 	printf("minuswithdotwithinte : %-10.3i||\n", 55555);
 	printf("minuswithdotwithchar : %-10.3c||\n", 'C');
 	printf("minuswithdotwithpoin : %-20.3p||\n", &main);
+	printf("--------------------\n");
+	printf("minuswnothins : %-10s||\n", NULL);
+	printf("minuswnothing : %-10||\n");
+	printf("minuswnothing : %-10");
+	printf("minuswnothingkskkk\n");
 
 	/* printf("minusalone:%-10s|| minuswithspace:% -10s||minusontheright:%s-10||minuswithnegative:%--5s||\n", "hello", "hello", "hello", "hello");
 	printf("minusalone:%-10.3s||\n", "hello");

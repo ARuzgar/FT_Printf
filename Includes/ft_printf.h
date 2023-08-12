@@ -6,7 +6,7 @@
 /*   By: aerbosna <aerbosna@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:34:01 by aerbosna          #+#    #+#             */
-/*   Updated: 2023/08/10 11:53:22 by aerbosna         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:05:54 by aerbosna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_print_base_10(int number);
 int	ft_print_unsigned(unsigned int number);
 int	ft_print_hex(unsigned int number, char identifier);
 
-/* ft_printf_bonus.c */
 
 /*Flag Struct*/
 
